@@ -1,10 +1,13 @@
 const si = require('systeminformation');
+// @zobaidulkazi
 
+// getCPUUsage function
 async function getCPUUsage() {
   const cpuData = await si.currentLoad();
   return cpuData.currentload;
 }
 
+// getMemoryUsage function
 async function getMemoryUsage() {
   const memData = await si.mem();
   const usedMB = memData.active / (1024 * 1024);
@@ -12,6 +15,7 @@ async function getMemoryUsage() {
   return { usedMB, totalMB };
 }
 
+// getNetworkUsage function
 async function getNetworkUsage() {
   const netData = await si.networkStats('eth0');
   const sentMB = netData[0].tx_sec / (1024 * 1024);
@@ -19,6 +23,7 @@ async function getNetworkUsage() {
   return { sentMB, receivedMB };
 }
 
+// getDiskUsage function
 async function getDiskUsage() {
   const diskData = await si.fsSize();
   const diskUsage = diskData.map(disk => {
@@ -29,11 +34,17 @@ async function getDiskUsage() {
   return diskUsage;
 }
 
+
+
+
+// systeminformation function
 async function systemMonitor() {
   const cpuUsage = await getCPUUsage();
   const memoryUsage = await getMemoryUsage();
   const networkUsage = await getNetworkUsage();
   const diskUsage = await getDiskUsage();
+
+  // output system
 
   console.log('=== System Monitor ===');
   if (cpuUsage !== undefined) {
@@ -48,4 +59,9 @@ async function systemMonitor() {
   });
 }
 
+
+// coll my function
 systemMonitor();
+
+
+// @zobaidulkazi
