@@ -1,19 +1,23 @@
-# Ignore compiled Python files
-*.pyc
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Ignore virtual environment
-venv/
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
 
-# Ignore log files
-*.log
 
-# Ignore sensitive or private data
-config.ini
 
-# Ignore IDE and editor-specific files
-.vscode/
-.idea/
-*.sublime-project
-*.sublime-workspace
+# production
+/build
 
-node_modules/
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
